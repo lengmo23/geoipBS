@@ -1,5 +1,4 @@
 payload:
   - DOMAIN-KEYWORD,r5-pc
-  - DOMAIN-SUFFIX,ea.com
-  - DOMAIN-SUFFIX,respawn.com
+
   - DOMAIN-KEYWORD,epicgames
