@@ -1,0 +1,5 @@
+payload:
+  - DOMAIN,r5-pc.s3.amazonaws.com
+  - DOMAIN-SUFFIX,ea.com
+  - DOMAIN-SUFFIX,respawn.com
+  - DOMAIN-KEYWORD,epicgames

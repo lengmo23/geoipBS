@@ -1,4 +1,0 @@
-payload:
-  - DOMAIN-KEYWORD,r5-pc
-
-  - DOMAIN-KEYWORD,epicgames
