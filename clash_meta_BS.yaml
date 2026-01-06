@@ -1,0 +1,473 @@
+# url 里填写自己的订阅,名称不能重复
+proxy-providers:
+  provider1:
+    url: ""
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204", interval: 300}
+    override:
+      udp: true
+      additional-prefix: "[provider1]"
+
+  provider2:
+    url: ""
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
+    override:
+      additional-prefix: "[provider2]"
+
+rule-providers:
+  # 秋风广告拦截规则
+  # https://awavenue.top
+  # 由于 Anti-AD 误杀率高，本项目已在 1.11-241024 版本更换秋风广告规则
+  AWAvenue-Ads:
+    type: http
+    behavior: domain
+    format: yaml
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://ghfast.top/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml"
+    interval: 86400
+
+  AppleIntelligence:
+    type: http
+    behavior: classical
+    url: https://ghfast.top/https://raw.githubusercontent.com/Accademia/Additional_Rule_For_Clash/refs/heads/main/AppleAI/AppleAI.yaml
+    interval: 86400
+  
+  pcdn_reject:
+    type: http
+    behavior: classical  # 注意：这里必须是 classical
+    format: 'text'
+    url: "https://ruleset.skk.moe/Clash/non_ip/reject-no-drop.txt"
+    path: ./ruleset/pcdn_reject.yaml
+    interval: 86400
+
+  gcp_hkg_asia-east2:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/gcp_hkg_asia-east2.txt"
+    interval: 86400
+
+  gcp_fin_europe-north1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/gcp_fin_europe-north1.txt"
+    interval: 86400
+
+  gcp_fra_europe-west3:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/gcp_fra_europe-west3.txt"
+    interval: 86400
+
+  aws_eu_eu-south-1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/aws_eu_eu-south-1.txt"
+    interval: 86400
+  
+  aws_eu_eu-west-1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/aws_eu_eu-west-1.txt"
+    interval: 86400
+
+  gcp_tyo_asia-northeast1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/gcp_tyo_asia-northeast1.txt"
+    interval: 86400
+
+  aws_us_us-east-1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/aws_us_us-east-1.txt"
+    interval: 86400
+
+  aws_us_us-west-2:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/aws_us_us-west-2.txt"
+    interval: 86400
+
+  gcp_spaulo_southamerica-east1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/gcp_spaulo_southamerica-east1.txt"
+    interval: 86400
+
+  gcp_santiago_southamerica-west1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/gcp_santiago_southamerica-west1.txt"
+    interval: 86400
+
+  aws_au_ap-southeast-2:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/aws_au_ap-southeast-2.txt"
+    interval: 86400
+
+  aws_india_ap-south-1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/aws_india_ap-south-1.txt"
+    interval: 86400
+
+  aws_bahrain_me-south-1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/aws_bahrain_me-south-1.txt"
+    interval: 86400
+
+  gcp_sgp_asia-southeast1:
+    type: http
+    behavior: ipcidr
+    format: text
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    url: "https://raw.githubusercontent.com/lengmo23/geoipBS/refs/heads/main/text/gcp_sgp_asia-southeast1.txt"
+    interval: 86400
+
+mixed-port: 7890
+ipv6: true
+allow-lan: true
+unified-delay: true
+tcp-concurrent: true
+external-controller: 127.0.0.1:9090
+external-ui: ui
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+
+geodata-mode: true
+geox-url:
+  geoip: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+  asn: "https://ghfast.top/https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+
+find-process-mode: strict
+keep-alive-interval: 1800
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+ntp:
+  enable: true
+  # 是否同步至系统时间，需要 root/管理员权限
+  write-to-system: false
+  server: time.apple.com
+  port: 123
+  interval: 30
+
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+tun:
+  enable: false
+  stack: system
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+dns:
+  enable: true
+  listen: :1053
+  ipv6: true
+  # 路由器个人建议使用 redir-host 以最佳兼容性
+  # 其他设备可以使用 fake-ip
+  enhanced-mode: redir-host
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - '*'
+    - '+.lan'
+    - '+.local'
+  default-nameserver:
+    - tcp://223.5.5.5
+    - tcp://114.114.114.114
+  nameserver:
+    - tls://8.8.4.4
+    - tls://1.0.0.1
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+    - tls://223.5.5.5
+  nameserver-policy:
+    "geosite:cn,private":
+      - tls://223.5.5.5
+      - https://doh.pub/dns-query
+    "geosite:!cn,!private": 
+      - "tls://8.8.8.8"
+      - "tls://1.1.1.1"
+proxy-groups:
+
+  - name: 节点选择
+    type: select
+    # include-all: true
+    proxies:  [自动选择,负载均衡,故障转移,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Proxy.png"
+
+  - name: 自动选择
+    type: url-test
+    # include-all: true
+    exclude-type: direct
+    tolerance: 10
+    icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png"
+  
+  # load-balance 将按照算法随机选择节点
+  - name: 负载均衡
+    type: load-balance
+    # include-all: true
+    exclude-type: direct
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 300
+  # strategy: consistent-hashing # 可选 round-robin 和 sticky-sessions
+    icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Roundrobin.png" 
+
+    # fallback 将按照 url 测试结果按照节点顺序选择
+  - name: 故障转移
+    type: fallback
+    # include-all: true
+    exclude-type: direct
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 300
+    icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Available.png" 
+
+  - name: AI平台
+    type: select
+    proxies: [节点选择,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png"
+
+  
+  # - name: Google
+  #   type: select
+  #   proxies: [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+  #   icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Google_Search.png"
+
+  - name: Microsoft
+    type: select
+    proxies: [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Microsoft.png"
+
+  - name: Apple
+    type: select
+    proxies: [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Apple_2.png"
+
+  - name: Telegram
+    type: select
+    proxies: [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram.png"
+
+  - name: X
+    type: select
+    proxies: [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/X_icon_2.svg/1483px-X_icon_2.svg.png"
+
+  - name: 哔哩哔哩
+    type: select
+    proxies: [DIRECT,节点选择,香港,台湾,日本,新加坡,美国]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/bilibili.png"
+
+  - name: 巴哈姆特
+    type: select
+    proxies: [台湾,节点选择,香港,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Bahamut.png"
+
+  - name: YouTube
+    type: select
+    proxies: [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/YouTube.png"
+
+  - name: NETFLIX
+    type: select
+    proxies: [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Netflix.png"
+  
+  - name: TikTok
+    type: select
+    proxies: [节点选择,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png"
+
+  - name: Spotify
+    type: select
+    proxies:  [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Spotify.png"
+
+  - name: Supercell登录相关
+    type: select
+    proxies:  [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Supercell-logo.svg/330px-Supercell-logo.svg.png"
+
+  - name: HKGAME
+    type: select
+    proxies:  [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9oZnRURHd5TllLRlNhRUJpblZkRi5wbmcifQ:supercell:3JGPmuxpg6448n3x4x2AhpmrTtjnL0JeACm_sJexZgw?width=2400"
+
+  - name: JPGAME
+    type: select
+    proxies:  [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9oZnRURHd5TllLRlNhRUJpblZkRi5wbmcifQ:supercell:3JGPmuxpg6448n3x4x2AhpmrTtjnL0JeACm_sJexZgw?width=2400"
+  
+  - name: SGGAME
+    type: select
+    proxies:  [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9oZnRURHd5TllLRlNhRUJpblZkRi5wbmcifQ:supercell:3JGPmuxpg6448n3x4x2AhpmrTtjnL0JeACm_sJexZgw?width=2400"  
+
+  - name: 游戏平台
+    type: select
+    proxies: [节点选择,香港,台湾,日本,新加坡,美国,DIRECT]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Game.png"
+    
+  - name: 国内直连
+    type: select
+    proxies:  [DIRECT,节点选择]
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China.png"
+
+  - name: AdBlock
+    type: select
+    proxies:  [REJECT,DIRECT]
+    icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Available.png"
+
+  - name: 漏网之鱼🐟
+    type: select
+    proxies:  [节点选择,DIRECT]
+    icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png"
+
+  #分隔,下面是地区分组
+  - name: 香港
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)港|hk|hongkong|hong kong"
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png"
+
+  - name: 台湾
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)台|tw|taiwan"
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Taiwan.png"
+
+  - name: 日本
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)日|jp|japan"
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png"
+
+  - name: 美国
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)美|us|unitedstates|united states"
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png"
+
+  - name: 新加坡
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)(新|sg|singapore)"
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png"
+
+  # - name: 其它地区
+  #   type: select
+  #   include-all: true
+  #   exclude-type: direct
+  #   filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
+
+
+
+rules:
+  # --- iCloud Private Relay 直连 ---
+  - DOMAIN-SUFFIX,mask.apple-dns.net,DIRECT
+  - DOMAIN,mask.icloud.com,DIRECT
+  - DOMAIN,mask-h2.icloud.com,DIRECT
+  - DOMAIN,mask-api.icloud.com,DIRECT
+  - DOMAIN,mask-canary.icloud.com,DIRECT
+  # quic
+  - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT 
+  - GEOSITE,private,DIRECT
+  - GEOIP,lan,DIRECT,no-resolve
+  - RULE-SET,AWAvenue-Ads,AdBlock
+  - RULE-SET,pcdn_reject,REJECT
+  - GEOSITE,category-ai-!cn,AI平台
+  - RULE-SET,AppleIntelligence,AI平台
+  - DOMAIN-SUFFIX,supercell.com,Supercell登录相关
+  - DOMAIN,game.brawlstarsgame.com,Supercell登录相关
+  - DOMAIN,game.clashofclans.com,Supercell登录相关
+  - DOMAIN,game.mocogame.com,Supercell登录相关
+  - GEOSITE,category-games,游戏平台
+  - GEOSITE,tiktok,TikTok
+  - GEOSITE,twitter,X
+  - GEOSITE,youtube,YouTube
+  - GEOSITE,apple,Apple
+  - GEOSITE,microsoft,Microsoft
+  - GEOSITE,telegram,Telegram
+  - GEOSITE,netflix,NETFLIX
+  - GEOSITE,bilibili,哔哩哔哩
+  - GEOSITE,bahamut,巴哈姆特
+  - GEOSITE,spotify,Spotify
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,国内直连
+  - GEOSITE,gfw,节点选择
+  - GEOSITE,geolocation-!cn,节点选择
+  - GEOSITE,CN,国内直连
+  - GEOSITE,apple-cn,国内直连
+  - GEOSITE,google-cn,国内直连
+  - GEOIP,netflix,NETFLIX
+  - GEOIP,telegram,Telegram
+  - GEOIP,twitter,X
+  - RULE-SET,gcp_hkg_asia-east2,HKGAME,no-resolve
+  - RULE-SET,gcp_fra_europe-west3,HKGAME,no-resolve
+  - RULE-SET,gcp_fin_europe-north1,HKGAME,no-resolve
+  - RULE-SET,aws_eu_eu-south-1,HKGAME,no-resolve
+  - RULE-SET,aws_eu_eu-west-1,HKGAME,no-resolve
+  - RULE-SET,gcp_tyo_asia-northeast1,JPGAME,no-resolve
+  - RULE-SET,aws_us_us-east-1,JPGAME,no-resolve
+  - RULE-SET,aws_us_us-west-2,JPGAME,no-resolve
+  - RULE-SET,gcp_spaulo_southamerica-east1,JPGAME,no-resolve
+  - RULE-SET,gcp_santiago_southamerica-west1,JPGAME,no-resolve
+  - RULE-SET,aws_au_ap-southeast-2,JPGAME,no-resolve
+  - RULE-SET,aws_india_ap-south-1,SGGAME,no-resolve
+  - RULE-SET,aws_bahrain_me-south-1,SGGAME,no-resolve
+  - RULE-SET,gcp_sgp_asia-southeast1,SGGAME,no-resolve  
+  - GEOIP,CN,国内直连
+  - MATCH,漏网之鱼🐟
