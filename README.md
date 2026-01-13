@@ -1,2 +1,0 @@
-# geoipBS
-geoip for BrawlStars
